@@ -1,0 +1,20 @@
+{
+  "name": "ilaro",
+  "module": "index.ts",
+  "type": "module",
+  "version": "0.0.1",
+  "author": {
+    "name": "Luis Lemus",
+    "email": "lemux.one@gmail.com",
+    "url": "https://github.com/lemux-one"
+  },
+  "scripts": {
+    "check": "bun x tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
