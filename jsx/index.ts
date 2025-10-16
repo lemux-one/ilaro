@@ -1,6 +1,6 @@
-declare namespace JSX {
+export declare namespace JSX {
   interface WithChildren {
-    children?: JSX.Element | JSX.Element[];
+    children?: JSX.Element | JSX.Element[] | string | string[];
   }
 
   interface Element {
@@ -16,6 +16,8 @@ declare namespace JSX {
 
   interface IntrinsicElements {
     html: WithChildren & CommonAttrs & { lang?: string };
+    div: WithChildren & CommonAttrs;
+    span: WithChildren & CommonAttrs;
     [key: string]: CommonAttrs & any;
   }
 }

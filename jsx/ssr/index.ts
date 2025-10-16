@@ -1,3 +1,5 @@
+import { JSX } from "..";
+
 const SELF_CLOSING_LOOKUP = {
   area: true,
   base: true,

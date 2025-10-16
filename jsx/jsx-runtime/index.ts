@@ -1,3 +1,5 @@
+import { JSX } from "..";
+
 function Fragment(props: Record<string, unknown>): JSX.Element {
   return {
     type: "Fragment",
