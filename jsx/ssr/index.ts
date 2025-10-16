@@ -38,6 +38,10 @@ function renderChildren(children?: JSX.Element["props"]["children"]): string {
     return children;
   }
 
+  if (typeof children === "number") {
+    return String(children);
+  }
+
   if (Array.isArray(children)) {
     return children.map(renderChildren).join("");
   }
