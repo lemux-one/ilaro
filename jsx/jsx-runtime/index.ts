@@ -1,6 +1,6 @@
 import { JSX } from "..";
 
-function Fragment(props: Record<string, unknown>): JSX.Element {
+function Fragment(props: JSX.Element["props"]): JSX.Element {
   return {
     type: "Fragment",
     props,
@@ -8,8 +8,8 @@ function Fragment(props: Record<string, unknown>): JSX.Element {
 }
 
 function jsx(
-  type: string | Function,
-  props: Record<string, unknown>,
+  type: JSX.Element["type"],
+  props: JSX.Element["props"],
 ): JSX.Element {
   return {
     type,
