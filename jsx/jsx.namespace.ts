@@ -1,49 +1,45 @@
 export declare namespace JSX {
   type LiteralElement = string | number;
 
-  interface WithChildren extends CommonAttrs {
-    children:
-      | LiteralElement
-      | LiteralElement[]
-      | JSX.Element
-      | JSX.Element[]
-      | null
-      | undefined;
-  }
-
-  type ComponentProps = CommonAttrs & Record<string, unknown>;
-
-  type Component = (props: ComponentProps) => JSX.Element;
-
-  type ComponentWithChildren = (
-    props: ComponentProps & WithChildren,
-  ) => JSX.Element;
-
-  interface Element {
-    type: LiteralElement | Component;
-    props: Partial<ComponentProps & WithChildren> & Record<string, unknown>;
-  }
-
   type CommonAttrs = Partial<{
     class: string;
     id: string;
     style: string;
   }>;
 
-  interface ContainerElementAttrs extends Partial<WithChildren> {}
+  interface WithChildren extends CommonAttrs {
+    children?:
+      | LiteralElement
+      | LiteralElement[]
+      | JSX.Element
+      | JSX.Element[]
+      | null
+      | undefined;
+    [key: string]: unknown;
+  }
+
+  type Component = (props: WithChildren) => JSX.Element;
+
+  interface Element {
+    type: LiteralElement | Component;
+    props: WithChildren;
+  }
+
+  interface ContainerElementAttrs extends WithChildren {}
 
   interface IntrinsicElements {
     html: HTML.Html;
     div: HTML.Div;
+    header: HTML.Div;
+    footer: HTML.Div;
     span: HTML.Span;
     a: HTML.Anchor;
     img: HTML.Img;
-    [key: string]: CommonAttrs & any;
   }
 
   type FC<
     T extends keyof IntrinsicElements = "div",
-    P extends ComponentProps = IntrinsicElements[T],
+    P extends WithChildren = IntrinsicElements[T],
   > = (props: P & IntrinsicElements[T]) => JSX.Element;
 }
 

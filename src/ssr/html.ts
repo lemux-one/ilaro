@@ -1,4 +1,4 @@
-import { JSX } from "..";
+import { JSX } from "../../jsx";
 
 const SELF_CLOSING_LOOKUP = {
   area: true,
@@ -67,10 +67,12 @@ function html(element: JSX.Element): string {
     const { children, ...attrs } = props;
     const renderedChildren = renderChildren(children);
     const renderedAttrs = renderAttrs(attrs);
-    const doctype = type === "html" ? "<!DOCTYPE html>" : "";
-    return isSelfClosing(type)
-      ? `${doctype}<${type}${renderedAttrs} />`
-      : `${doctype}<${type}${renderedAttrs}>${renderedChildren}</${type}>`;
+    const renderedString = isSelfClosing(type)
+      ? `<${type}${renderedAttrs} />`
+      : `<${type}${renderedAttrs}>${renderedChildren}</${type}>`;
+
+    if (type !== "html") return renderedString;
+    return "<!DOCTYPE html>" + renderedString;
   }
 
   console.error("Unknown element type:", type);

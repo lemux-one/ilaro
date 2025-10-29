@@ -1,2 +1,2 @@
 export * from "./jsx.namespace";
-export * from "./utils";
+export * from "./jsx-runtime/utils";
